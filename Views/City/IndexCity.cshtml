@@ -1,13 +1,23 @@
 @using World.Models;
 <h1>Cities</h1>
+
+<form action="/sortascending" method="post">
+  <button type="submit">Sort ascending</button>
+</form>
+
+<form action="/sortdescending" method="post">
+  <button type="submit">Sort descending</button>
+</form>
 <ul>
 
   @foreach (City city in Model)
 {
 
 
-  <li>@city.GetName()</li>
-
+  <li>@city.GetName() </li>
+<ul>
+<li> @city.GetPopulation()</li>
+</ul>
 
 
 

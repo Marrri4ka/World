@@ -78,6 +78,65 @@ namespace World.Models
 
     }
 
+
+    public static List<City> SortAscending()
+    {
+      List<City> allCitiesAscending = new List<City>{};
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT id, name, population FROM city ORDER by population ASC;";
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      while (rdr.Read())
+      {
+        int cityId = rdr.GetInt32(0);
+        string cityName = rdr.GetString(1);
+        int cityPopulation = rdr.GetInt32(2);
+        City newCity= new City (cityId ,cityName, cityPopulation);
+        allCitiesAscending.Add(newCity);
+      }
+
+      conn.Close();
+
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+
+      return allCitiesAscending ;
+
+    }
+
+    public static List<City> SortDescending()
+    {
+      List<City> allCitiesDescending = new List<City>{};
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT id, name, population FROM city ORDER by population DESC;";
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      while (rdr.Read())
+      {
+        int cityId = rdr.GetInt32(0);
+        string cityName = rdr.GetString(1);
+        int cityPopulation = rdr.GetInt32(2);
+        City newCity= new City (cityId ,cityName, cityPopulation);
+        allCitiesDescending.Add(newCity);
+      }
+
+      conn.Close();
+
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+
+      return allCitiesDescending ;
+
+    }
+
     // public static void ClearAll()
     // {
     //   _instances.Clear();

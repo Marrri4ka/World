@@ -13,5 +13,21 @@ namespace World.Controllers
       List<City> allCities = City.GetAll();
       return View(allCities);
     }
+
+
+    [HttpPost("/sortascending")]
+    public ActionResult IndexASCCity()
+    {
+      List<City> allCitiesAscending = City.SortAscending();
+      return View("IndexCity",allCitiesAscending);
+    }
+
+
+    [HttpPost("/sortdescending")]
+    public ActionResult IndexMyDESCCity()
+    {
+      List<City> allCitiesDescending = City.SortDescending();
+      return View("IndexCity",allCitiesDescending);
+    }
   }
 }
