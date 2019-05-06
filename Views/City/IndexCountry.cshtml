@@ -1,0 +1,29 @@
+@using World.Models;
+<h1>Countries</h1>
+
+<form action="/continent" method="post">
+    <label for="continent">Filter by continent</label>
+    <input id="continent" name="continent" type="text"> <button id="button" type="submit">Find</button><br>
+
+  </form>
+
+
+
+  @foreach (Country country in Model)
+{
+
+
+  <li>@country.GetName() </li>
+<ul>
+<li> @country.GetLifeExpectancy()</li>
+</ul>
+<ul>
+<li> @country.GetPopulation()</li>
+</ul>
+<ul>
+<li> @country.GetContinent()</li>
+</ul>
+
+
+
+}

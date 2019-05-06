@@ -29,5 +29,22 @@ namespace World.Controllers
       List<City> allCitiesDescending = City.SortDescending();
       return View("IndexCity",allCitiesDescending);
     }
+
+    [HttpGet("/country")]
+    public ActionResult IndexCountry()
+    {
+      List<Country> allCountries= Country.GetAll();
+      return View(allCountries);
+    }
+
+    [HttpPost("/continent")]
+    public ActionResult IndexCountry(string continent)
+    {
+      List<Country> allContinents= Country.GetAllContinents(continent);
+      return View(allContinents);
+    }
+
+
+
   }
 }
