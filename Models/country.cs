@@ -102,7 +102,7 @@ namespace World.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"SELECT name, continent, population, lifeExpectancy FROM country WHERE continent = '@userInput';";
+      cmd.CommandText = @"SELECT name, continent, population, lifeExpectancy FROM country WHERE continent ='" + userInput + "';";
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
 
       while (rdr.Read())

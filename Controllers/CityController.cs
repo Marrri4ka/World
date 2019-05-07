@@ -37,11 +37,11 @@ namespace World.Controllers
       return View(allCountries);
     }
 
-    [HttpPost("/continent")]
-    public ActionResult IndexCountry(string continent)
+    [HttpPost("/continentFilter")]
+    public ActionResult IndexMyCountry(string continent)
     {
       List<Country> allContinents= Country.GetAllContinents(continent);
-      return View(allContinents);
+      return View("IndexCountry",allContinents);
     }
 
 
